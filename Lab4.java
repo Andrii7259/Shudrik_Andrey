@@ -5,28 +5,95 @@ import java.util.Scanner;
 public class Lab4 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        //Масив об'єктів класу Student
-        Student[] s = new Student[3];
-        System.out.println("Введіть параметри кожного студента \nчерез пробіл (Ім'я Зріст Оцінка Курс), натисніть Enter");
-        //Введення параметрів об'єктів классу
-        Student Tom = new Student("Tom", 179, 199, 4);
-        while (true){
-            try{
-                for (int i = 0; i < s.length; i++) {
-                    s[i] = new Student(in.next(), in.nextInt(), in.nextInt(), in.nextInt());
 
-                }break;
-
-            }catch (Exception e){
-                System.out.println("Введіть дані необхідних типів.");
-
+        //Р’РёР·РЅР°С‡РµРЅРЅСЏ РєС–Р»СЊРєРѕСЃС‚С– СЃС‚СѓРґРµРЅС‚С–РІ
+        int numOfStudents;
+        System.out.println("РљС–Р»СЊРєС–СЃС‚СЊ СЃС‚СѓРґРµРЅС‚С–РІ:");
+        while (true) {
+            in.nextLine();
+            if (!in.hasNextInt()) {
+                System.out.println("Р’РІРµРґС–С‚СЊ С†С–Р»Рµ С‡РёСЃР»Рѕ.");
+            } else {
+                numOfStudents = in.nextInt();
+                break;
             }
         }
-        //Пустий об'єкт для тимчасового зберігання даних
-        Student s1;
-        //Бульбашкове сортування
 
-        //Сортування за зростанням
+
+        //РњР°СЃРёРІ РѕР±'С”РєС‚С–РІ РєР»Р°СЃСѓ Student
+
+        Student[] s = new Student[numOfStudents];
+
+        //Р’РІРµРґРµРЅРЅСЏ РїР°СЂР°РјРµС‚СЂС–РІ РѕР±'С”РєС‚С–РІ РєР»Р°СЃСѓ
+
+        for (int i = 0; i < s.length; i++) {
+            System.out.format("Р†Рј'СЏ СЃС‚СѓРґРµРЅС‚Р° в„–%d:", i + 1);
+            String name = in.next();
+
+            //Р РѕР±РёРјРѕ РїРµСЂС€Сѓ Р»С–С‚РµСЂСѓ РІРµР»РёРєРѕСЋ
+
+            String nameFirstCapitalLetter = name.substring(0, 1).toUpperCase() + name.substring(1);
+            s[i] = new Student(nameFirstCapitalLetter);
+            System.out.format("Р—СЂС–СЃС‚ СЃС‚СѓРґРµРЅС‚Р° в„–%d:", i + 1);
+
+            // РџРµСЂРµРІС–СЂРєР° РЅР° С‚РёРї РґР°РЅРёС…
+
+            while (true) {
+                in.nextLine();
+                if (!in.hasNextFloat()) {
+                    System.out.println("Р’РІРµРґС–С‚СЊ С‡РёСЃР»Рѕ.");
+                } else {
+                    s[i].setHeight(in.nextFloat());
+                    if (s[i].getHeight() <= 0) {
+                        System.out.println("Р—СЂС–СЃС‚ РјР°С” Р±СѓС‚ РґРѕРґР°С‚РЅС–Рј С‡РёСЃР»РѕРј.");
+                    } else if (s[i].getHeight() < 75) {
+                        System.out.println("Р—СЂС–СЃС‚ РЅР°Р№РЅРёР¶С‡РѕС— Р»СЋРґРёРЅРё СЃРІС–С‚Сѓ - 74 СЃРј, РјРµРЅС€Рµ РЅРµ Р±СѓРІР°С”.");
+                    } else if (s[i].getHeight() > 272) {
+                        System.out.println("Р—СЂС–СЃС‚ РЅР°Р№РІРёС‰РѕС— Р»СЋРґРёРЅРё СЃРІС–С‚Сѓ - 272 СЃРј, Р±С–Р»СЊС€Рµ РЅРµ Р±СѓРІР°С”.");
+                    } else {
+                        break;
+                    }
+                }
+            }
+            System.out.format("РћС†С–РЅРєР° Р—РќРћ СЃС‚СѓРґРµРЅС‚Р° в„–%d:", i + 1);
+
+            while (true) {
+                in.nextLine();
+                if (!in.hasNextFloat()) {
+                    System.out.println("Р’РІРµРґС–С‚СЊ С‡РёСЃР»Рѕ.");
+                } else {
+                    s[i].setZnoMark(in.nextFloat());
+                    if (s[i].getZnoMark() < 100 || s[i].getZnoMark() > 200) {
+                        System.out.println("РћС†С–РЅРєР° Р—РќРћ РјР°С” Р±СѓС‚Рё РІ РјРµР¶Р°С… РІС–Рґ 100 РґРѕ 200 Р±Р°Р»С–РІ.");
+                    } else {
+                        break;
+                    }
+                }
+            }
+
+            System.out.format("РљСѓСЂСЃ СЃС‚СѓРґРµРЅС‚Р° в„–%d:", i + 1);
+            while (true) {
+                in.nextLine();
+                if (!in.hasNextInt()) {
+                    System.out.println("Р’РІРµРґС–С‚СЊ С†С–Р»Рµ С‡РёСЃР»Рѕ.");
+                } else {
+                    s[i].setGrade(in.nextInt());
+                    if (s[i].getGrade() < 1 || s[i].getGrade() > 6) {
+                        System.out.println("РќРµРјР°С” С‚Р°РєРѕРіРѕ РєСѓСЂСЃСѓ.");
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
+
+        //РџСѓСЃС‚РёР№ РѕР±'С”РєС‚ РґР»СЏ С‚РёРјС‡Р°СЃРѕРІРѕРіРѕ Р·Р±РµСЂС–РіР°РЅРЅСЏ РґР°РЅРёС…
+
+        Student s1;
+
+        //Р‘СѓР»СЊР±Р°С€РєРѕРІРµ СЃРѕСЂС‚СѓРІР°РЅРЅСЏ
+
+        //РЎРѕСЂС‚СѓРІР°РЅРЅСЏ Р·Р° Р·СЂРѕСЃС‚Р°РЅРЅСЏРј
         for (int i = 0; i < s.length; i++) {
             for (int j = 0; j < s.length; j++) {
                 if (j != s.length - 1) {
@@ -38,12 +105,13 @@ public class Lab4 {
                 }
             }
         }
-        System.out.println("Список, відсортований\nза зростанням зросту:");
+        System.out.println("РЎРїРёСЃРѕРє, РІС–РґСЃРѕСЂС‚РѕРІР°РЅРёР№\nР·Р° Р·СЂРѕСЃС‚Р°РЅРЅСЏРј Р·СЂРѕСЃС‚Сѓ:");
         for (Student student : s) {
-            System.out.println(student.getName() + "\t" + student.getHeight() + " см;");
+            System.out.println(student.getName() + "\t" + student.getHeight() + " СЃРј;");
         }
 
-        System.out.println("\nСписок, відсортований\nза спаданням оцінки ЗНО:");
+        System.out.println("\nРЎРїРёСЃРѕРє, РІС–РґСЃРѕСЂС‚РѕРІР°РЅРёР№\nР·Р° СЃРїР°РґР°РЅРЅСЏРј РѕС†С–РЅРєРё Р—РќРћ:");
+        //РЎРѕСЂС‚СѓРІР°РЅРЅСЏ Р·Р° СЃРїР°РґР°РЅРЅСЏРј
         for (int i = 0; i < s.length; i++) {
             for (int j = 0; j < s.length; j++) {
                 if (j != s.length - 1) {
@@ -56,8 +124,7 @@ public class Lab4 {
             }
         }
         for (Student student : s) {
-            System.out.println(student.getName() + "\t" + student.getZnoMark() + " балів;");
+            System.out.println(student.getName() + "\t" + student.getZnoMark() + " Р±Р°Р»С–РІ;");
         }
-        System.out.println("Том відвідав лекцію" + " " + Tom.visitLections(17) + " " + "разів.");
     }
 }
