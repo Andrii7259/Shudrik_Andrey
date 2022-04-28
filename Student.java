@@ -1,35 +1,48 @@
 package com.company;
-// Створюємо класс Student
-public class Student {
-    //Ініціалізуємо параметри класу
-    public String name;
-    public int height;
-    public int znoMark;
-    public int grade;
-    public int visitLections(int times){
-        return times;
-    }
 
-    //Клас з параметрами
-    public Student(String name, int height, int znoMark, int grade) {
+// РЎС‚РІРѕСЂСЋС”РјРѕ РєР»Р°СЃСЃ Student
+public class Student {
+    //Р†РЅС–С†С–Р°Р»С–Р·СѓС”РјРѕ РїР°СЂР°РјРµС‚СЂРё РєР»Р°СЃСѓ
+    public String name;
+    public float height;
+    public float znoMark;
+    public int grade;
+
+    public Student(String name) {
         super();
         this.name = name;
-        this.height = height;
-        this.znoMark = znoMark;
-        this.grade = grade;
     }
 
-    //Параметри задаєються окремо
+    //РџР°СЂР°РјРµС‚СЂРё Р·Р°РґР°С”СЋС‚СЊСЃСЏ РѕРєСЂРµРјРѕ
     public String getName() {
         return name;
     }
 
-    public int getHeight() {
+    public float getHeight() {
         return height;
     }
 
-    public int getZnoMark() {
+    public float getZnoMark() {
         return znoMark;
     }
-    public int getGrade() { return grade; }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    public void setZnoMark(float znoMark) {
+        this.znoMark = znoMark;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
 }
